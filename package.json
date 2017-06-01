@@ -1,8 +1,21 @@
 {
-  "name": "api",
+  "name": "DarkSkyProxy",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": ">=5.0 <8",
+    "npm": ">=3.0 <4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dagman/DarkSkyProxy"
+  },
+  "author": "Islam Ibakaev <islamibakaev@gmail.com> (https://github.com/dagman)",
+  "bugs": {
+    "url": "https://github.com/dagman/DarkSkyProxy/issues"
+  },
+  "homepage": "https://github.com/dagman/DarkSkyProxy",
   "scripts": {
     "start": "node server.js"
   },
@@ -10,7 +23,8 @@
     "cors": "^2.8.3",
     "dark-sky": "^1.0.10",
     "express": "^4.15.3",
-    "express-rate-limit": "^2.8.0"
+    "express-rate-limit": "^2.8.0",
+    "serve-favicon": "^2.4.3"
   },
   "devDependencies": {
     "babel-register": "^6.24.1"

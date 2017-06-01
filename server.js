@@ -1,9 +1,12 @@
 const Express = require('express')
+const path = require('path')
+const favicon = require('serve-favicon')
 // const RateLimit = require('express-rate-limit');
 // const cors = require('cors')
 // const DarkSky = require('dark-sky')
 
 const app = Express()
+app.use(favicon(path.join(process.cwd(), 'favicon.ico')))
 app.set('port', process.env.PORT || 5000)
 
 // const limiter = new RateLimit({
