@@ -31,6 +31,8 @@ app.get('/api/v1/json', function (req, res) {
   let lon = req.param('lon')
   let units = req.param('units')
 
+  res.setHeader("Content-Type", "application/json");
+
   forecast
     .latitude(lat)
     .longitude(lon)
