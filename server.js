@@ -2,8 +2,8 @@ const Express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
 // const RateLimit = require('express-rate-limit');
-// const cors = require('cors')
-// const DarkSky = require('dark-sky')
+const cors = require('cors')
+const DarkSky = require('dark-sky')
 
 const app = Express()
 app.use(favicon(path.join(process.cwd(), 'favicon.ico')))
@@ -16,7 +16,7 @@ app.set('port', process.env.PORT || 5000)
 // })
 
 // app.use(limiter);
-// app.use(cors())
+app.use(cors())
 
 // Home
 app.get('/', function (req, res) {
@@ -24,29 +24,25 @@ app.get('/', function (req, res) {
 })
 
 // DarkSky API
-// const forecast = new DarkSky(keys.darksky)
+const forecast = new DarkSky('ddd485ba03d64bb446db41178f9f6712')
 
-// app.get('/weather/v1/json', function (req, res) {
-//   let lat = req.param('lat')
-//   let lon = req.param('lon')
-//   let units = req.param('units')
+app.get('/api/v1/json', function (req, res) {
+  let lat = req.param('lat')
+  let lon = req.param('lon')
+  let units = req.param('units')
 
-//   forecast
-//     .latitude(lat)
-//     .longitude(lon)
-//     .units(units)
-//     .language('en')
-//     .exclude('minutely,hourly,flags')
-//     .get()
-//     .then(function (response) {
-//       res.send(response)
-//     })
-//     .catch(function (error) {
-//       res.send(error)
-//     })
+  forecast
+    .latitude(lat)
+    .longitude(lon)
+    .units(units)
+    .language('en')
+    .exclude('minutely,hourly,daily,alerts,flags')
+    .get()
+    .then(response => res.json(response))
+    .catch(error => res.send(error))
 
-//   console.log(req.method + ': /weather/v1/'+lat+'/'+lon+'/'+units)
-// })
+  console.log(req.method + ': /api/v1/json' + lat + '/' + lon + '/' + units)
+})
 
 app.get('/headers', function(req,res){
   res.set('Content-Type','text/plain');
