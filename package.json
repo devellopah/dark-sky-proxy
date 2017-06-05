@@ -26,7 +26,5 @@
     "express-rate-limit": "^2.8.0",
     "serve-favicon": "^2.4.3"
   },
-  "devDependencies": {
-    "babel-register": "^6.24.1"
-  }
+  "devDependencies": {}
 }
