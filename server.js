@@ -38,10 +38,6 @@ const forecast = new DarkSky(key)
 
 app.get('/api/v1/json', limiter, (req, res) => {
   const nextReqAllowedFrom = new Date(new Date().getTime() + sleep).toLocaleString()
-
-  // console.log('req is reached', new Date().getTime())
-  console.log('rate limit', req.rateLimit)
-  console.log('next request allowed from', nextReqAllowedFrom)
   const { lat, lon, units } = req.query
 
   forecast
