@@ -1,3 +1,6 @@
+// load enviroment variables from .env file
+require('dotenv').config()
+
 const path = require('path')
 
 const express = require('express')
@@ -6,9 +9,6 @@ const cors = require('cors')
 
 const DarkSky = require('dark-sky')
 const RateLimit = require('express-rate-limit');
-
-//darksky api key (you will get your own key by registering account at https://darksky.net/dev/)
-const key = require('./key')
 
 const app = express()
 
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 })
 
 // DarkSky API
-const forecast = new DarkSky(key)
+const forecast = new DarkSky(process.env.API_KEY)
 
 app.get('/api/v1/json', limiter, (req, res) => {
   const nextReqAllowedFrom = new Date(new Date().getTime() + sleep).toLocaleString()
