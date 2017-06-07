@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/dagman/DarkSkyProxy",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.3",
