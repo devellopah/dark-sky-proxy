@@ -33,10 +33,12 @@ app.get('/', (req, res) => {
   res.send(`<div>Current time is: ${ new Date().toLocaleString() }</div>`)
 })
 
+console.log(process.env.API_KEY);
+
 // DarkSky API
 const forecast = new DarkSky(process.env.API_KEY)
 
-app.get('/api/v1/json', limiter, (req, res) => {
+app.get('/api/v1/json', (req, res) => {
   const nextReqAllowedFrom = new Date(new Date().getTime() + sleep).toLocaleString()
   const { lat, lon, units } = req.query
 
