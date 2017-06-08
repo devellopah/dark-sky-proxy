@@ -1,5 +1,3 @@
-Simple proxy-server to fetch weather conditions from [Dark Sky API](https://darksky.net/dev/)  
-
 ## WHY?
 If you going to build weather app or doing it right now hundred percent you encountered (or will do it) an issue. The issue 
 is `No 'Access-Control-Allow-Origin' header is present on the requested resource` message in console when you try to fetch weather data from 
