@@ -24,7 +24,7 @@ const sleep = 600000; // 10 minutes
 // the weather doesn't change too often
 const limiter = new RateLimit({
   windowMs: sleep,
-  max: 1, // limit each IP to 1 requests per windowMs
+  max: 10, // limit each IP to 1 requests per windowMs
   delayMs: 0 // disable delaying - full speed until the max limit is reached
 })
 
@@ -37,8 +37,6 @@ app.get('/', (req, res) => {
 const forecast = new DarkSky(process.env.API_KEY)
 
 app.get('/api/v1/json', limiter, (req, res) => {
-
-  const nextReqAllowedFrom = new Date(new Date().getTime() + sleep).toLocaleString()
   const { lat, lon, units } = req.query
 
   forecast
@@ -48,7 +46,7 @@ app.get('/api/v1/json', limiter, (req, res) => {
     .language('en')
     .exclude('minutely,hourly,daily,alerts,flags')
     .get()
-    .then(weather => res.status(200).json(Object.assign(weather, { nextReqAllowedFrom })))
+    .then(weather => res.status(200).json(weather))
     .catch(error => res.send(error))
 })
 

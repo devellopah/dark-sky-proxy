@@ -1,6 +1,6 @@
 {
-  "name": "DarkSkyProxy",
-  "version": "1.0.0",
+  "name": "dark-sky-proxy",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "engines": {
@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dagman/DarkSkyProxy"
+    "url": "https://github.com/dagman/dark-sky-proxy"
   },
   "author": "Islam Ibakaev <islamibakaev@gmail.com> (https://github.com/dagman)",
   "bugs": {
-    "url": "https://github.com/dagman/DarkSkyProxy/issues"
+    "url": "https://github.com/dagman/dark-sky-proxy/issues"
   },
-  "homepage": "https://github.com/dagman/DarkSkyProxy",
+  "homepage": "https://github.com/dagman/dark-sky-proxy",
   "scripts": {
     "start": "nodemon index.js"
   },
