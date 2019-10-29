@@ -18,5 +18,5 @@ Below is excerption from [faq section](https://darksky.net/dev/docs/faq#cross-or
 7. deploy your proxy-server to [heroku](https://heroku.com) or 
 [now](https://zeit.co/now) when your weather app is ready for production
 (you need to run proxy-server live in internet in order for your weather app to work in production)
-
+8. make calls through the proxy with the format: https://yourURL.herokuapp.com/api/v1/json?lat=50.1234&lon=-116.1234
 
