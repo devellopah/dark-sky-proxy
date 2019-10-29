@@ -19,35 +19,47 @@ app.set('port', process.env.PORT || 3000)
 
 app.enable('trust proxy')
 
-const sleep = 600000; // 10 minutes
-
+const limit = 15; // 15 minutes
 // the weather doesn't change too often
 const limiter = new RateLimit({
-  windowMs: sleep,
-  max: 10, // limit each IP to 1 requests per windowMs
-  delayMs: 0 // disable delaying - full speed until the max limit is reached
+  windowMs: limit * 60 * 1000, // 15 miinutes
+  max: 1, // limit each IP to 1 requests per windowMs
+  onLimitReached: function(req, res) {
+    const d = new Date()
+    const tryAfterDate = new Date(d.setMinutes(d.getMinutes() + limit))
+    return res.status(429).json({
+      message: "Weather doesn't change so fast, please try again after <span style='font-weight: 700; color: #f8bb86; font-style: italic;'>" + tryAfterDate.toLocaleTimeString() + "</span>.",
+      isLimitJustReached: true,
+    });
+  }
 })
 
 // Home
 app.get('/', (req, res) => {
-  res.send(`<div>Current time is: ${ new Date().toLocaleString() }</div>`)
+  res.send(`<div>Current time is: ${ new Date().toLocaleTimeString() }</div>`)
 })
 
 // DarkSky API
-const forecast = new DarkSky(process.env.API_KEY)
+const darksky = new DarkSky(process.env.API_KEY)
 
-app.get('/api/v1/json', limiter, (req, res) => {
-  const { lat, lon, units } = req.query
+app.get('/api/weather', limiter, async (req, res) => {
+  try {
+    const { latitude, longitude, units } = req.query
+    const forecast = await darksky
+      .options({
+        latitude,
+        longitude,
+        units,
+        language: 'en',
+        exclude: ['minutely','hourly','daily','alerts','flags'],
+      })
+      .get()
 
-  forecast
-    .latitude(lat)
-    .longitude(lon)
-    .units(units)
-    .language('en')
-    .exclude('minutely,hourly,daily,alerts,flags')
-    .get()
-    .then(weather => res.status(200).json(weather))
-    .catch(error => res.send(error))
+    return res.status(200).json(forecast)
+
+  } catch (err) {
+    return res.status(err.response.status).send(err.response.statusText)
+  }
 })
 
 app.listen(
