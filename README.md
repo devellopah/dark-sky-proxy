@@ -9,16 +9,15 @@ Below is excerption from [faq section](https://darksky.net/dev/docs/faq#cross-or
 > Then you can provide forecasts to your clients without exposing your API key.
 
 ### How to use?
-1. fork it
-2. `git clone` to your machine
-3. `yarn install`
-4. register at https://darksky.net/dev/ to get you api key
-5. change `.env.exampe` to `.env` and put you api key as value to `API_KEY`. 
-6. run it locally with `yarn start` before your weather app
-7. deploy your proxy-server to [heroku](https://heroku.com) or 
-[now](https://zeit.co/now) when your weather app is ready for production
-(you need to run proxy-server live in internet in order for your weather app to work in production)
-8. make calls through the proxy with the format: https://YOUR_PROXY_NAME.herokuapp.com/api/weather?latitude=VALUE&longitude=VALUE&units=uk2
+1. fork
+2. `git clone`
+3. `yarn` or `npm install`
+4. get an api key at https://darksky.net/dev/
+5. rename `.env.exampe` to `.env` and assign you api key as value to `API_KEY`. 
+6. start server with `yarn start`
+7. [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+The last step only makes sense if you going to build weather app and put it to the web.
 
 ### Did you built frontend part to pair with this server?
 Yes, i actually built a very small weather app, you can find it [here](https://github.com/devellopah/vue-weather).
