@@ -19,6 +19,7 @@ Below is excerption from [faq section](https://darksky.net/dev/docs/faq#cross-or
 
 The last step only makes sense if you going to build weather app and put it to the web.
 
-### Did you built frontend part to pair with this server?
-Yes, i actually built a very small weather app, you can find it [here](https://github.com/devellopah/vue-weather).
-Feel free to `git clone` and investigate it if you are interested in building weather showing app, but don't know how to start.
+### What about weather app?
+The fact you got interested in this repo usually means you have already built weather app or __you are going to do it__.
+I built a very simple weather app, you can find it [here](https://github.com/devellopah/vue-weather).
+Feel free to `git clone` and investigate it if you are struggle to build one or even don't know how to start.
