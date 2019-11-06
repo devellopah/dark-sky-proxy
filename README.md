@@ -19,7 +19,8 @@ Below is excerption from [faq section](https://darksky.net/dev/docs/faq#cross-or
 
 The last step only makes sense if you going to build weather app and put it to the web.
 
-### What about weather app?
-The fact you got interested in this repo usually means you have already built weather app or __you are going to do it__.
-I built a very simple weather app, you can find it [here](https://github.com/devellopah/vue-weather).
-Feel free to `git clone` and investigate it if you are struggle to build one or even don't know how to start.
+If you do publish to Heroku, add your Darksky API key to the environment variables:
+
+- `heroku config:set API_KEY=dark_sky_key`
+
+Or, navigate to settings in your Heroku dashboard, then to Configure Vars, and add a `KEY` of `API_KEY` and a `VALUE` of your Dark Sky API key
