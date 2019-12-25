@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 // DarkSky API
 const darksky = new DarkSky(process.env.API_KEY)
 
-app.get('/api/weather', limiter, async (req, res) => {
+app.use('/api/weather', limiter, async (req, res, next) => {
   try {
     const { latitude, longitude, units } = req.query
     const forecast = await darksky
@@ -58,7 +58,7 @@ app.get('/api/weather', limiter, async (req, res) => {
     return res.status(200).json(forecast)
 
   } catch (err) {
-    return res.status(err.response.status).send(err.response.statusText)
+    next(err)
   }
 })
 
