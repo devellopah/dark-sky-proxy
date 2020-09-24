@@ -9,10 +9,10 @@ The excerption from [faq section](https://darksky.net/dev/docs/faq#cross-origin)
 ### How to use?
 1. fork
 2. `git clone`
-3. `yarn` or `npm install`
-4. get an api key at https://darksky.net/dev/
+3. `npm install`
+4. grab an api key at https://darksky.net/dev/
 5. rename `.env.exampe` to `.env` and assign you api key as value to `API_KEY`. 
-6. start server with `yarn start`
+6. start server with `npm run start`
 7. [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 The last step only makes sense if you going to build weather app and put it to the web.
